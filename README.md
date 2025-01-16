@@ -1,7 +1,8 @@
 Portfolio Website
 
 Welcome to my portfolio website, accessible at www.ayzstha.com. This website serves as a personal showcase of my projects, skills, and achievements. It includes links to my social media profiles and my resume for easy access.
-Technologies Used
+
+Technologies Used:
 
     HTML: The structure and content of the website.
     CSS: The design and styling of the website.
