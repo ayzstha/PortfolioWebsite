@@ -17,7 +17,3 @@ Features
 Deployment
 
 The website is hosted on GitHub Pages. You can visit it at www.ayzstha.com.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
