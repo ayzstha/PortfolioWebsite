@@ -409,6 +409,37 @@ h3{
     color: var(--color-white);
     z-index: 2;
 }
+/* ----- CLEARWATER ANALYTICS ----- */
+.ca-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.ca-box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    height: 250px;
+    background: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    overflow: hidden;
+}
+.ca-box>i{
+    font-size: 50px;
+    color: #FF6E15;
+    margin-bottom: 25px;
+}
+.ca-box label{
+    font-size: 15px;
+    color: #777;
+}
+
 
 /* ----- CONTACT BOX ----- */
 .contact-info{
