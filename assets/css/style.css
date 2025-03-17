@@ -329,13 +329,11 @@ h3{
     color: #777;
 }
 .about-btn button {
-    position: center; /* 'center' is not a valid value for position */
-    right: 20px; /* Consider whether you need this */
-    bottom: auto;
     background: var(--first-color);
     color: var(--color-white);
     border-radius: 30px;
     margin-top: 30px; /* Add top margin for spacing */
+    padding: 12px 20px; /* Add padding for better spacing */
 }
 .about-btn button:hover{
     background: var(--first-color-hover);
@@ -419,9 +417,9 @@ h3{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 30px;
+    padding: 40px 30px; /* Increase padding for better spacing */
     width: 100%;
-    height: 315px;
+    height: auto; /* Adjust height to auto */
     background: var(--second-color);
     border-radius: 10px;
     box-shadow: 1px 8px 10px 2px var(--first-shadow-color);

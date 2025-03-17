@@ -116,3 +116,8 @@ sections.forEach(current =>{
 
 window.addEventListener('scroll', scrollActive)
 
+function showPlaceholderMessage(event) {
+    event.preventDefault();
+    alert("The analysis document is not available at the moment.");
+}
+
