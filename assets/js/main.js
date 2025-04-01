@@ -37,7 +37,7 @@ var typingEffect = new Typed(".typedText", {
   backDelay: 2000,
 });
 
-/* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
+/* ----- SCROLL REVEAL ANIMATION ----- */
 const sr = ScrollReveal({
   origin: "top",
   distance: "80px",
@@ -45,7 +45,7 @@ const sr = ScrollReveal({
   reset: true,
 });
 
-/* -- HOME -- */
+// Home section animations
 sr.reveal(".featured-text-card", {});
 sr.reveal(".featured-name", { delay: 100 });
 sr.reveal(".featured-text-info", { delay: 200 });
@@ -53,15 +53,15 @@ sr.reveal(".featured-text-btn", { delay: 200 });
 sr.reveal(".social_icons", { delay: 200 });
 sr.reveal(".featured-image", { delay: 300 });
 
-/* -- PROJECT BOX -- */
+// Project box animations
 sr.reveal(".project-box", { interval: 200 });
 
-/* -- HEADINGS -- */
+// Headings animations
 sr.reveal(".top-header", {});
 
-/* ----- ## -- SCROLL REVEAL LEFT_RIGHT ANIMATION -- ## ----- */
+/* ----- SCROLL REVEAL LEFT/RIGHT ANIMATION ----- */
 
-/* -- ABOUT INFO & CONTACT INFO -- */
+// Left animations
 const srLeft = ScrollReveal({
   origin: "left",
   distance: "80px",
@@ -72,7 +72,7 @@ const srLeft = ScrollReveal({
 srLeft.reveal(".about-info", { delay: 100 });
 srLeft.reveal(".contact-info", { delay: 100 });
 
-/* -- ABOUT SKILLS & FORM BOX -- */
+// Right animations
 const srRight = ScrollReveal({
   origin: "right",
   distance: "80px",
@@ -83,8 +83,7 @@ const srRight = ScrollReveal({
 srRight.reveal(".skills-box", { delay: 100 });
 srRight.reveal(".form-control", { delay: 100 });
 
-/* ----- CHANGE ACTIVE LINK ----- */
-
+/* ----- CHANGE ACTIVE LINK ON SCROLL ----- */
 const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
@@ -111,9 +110,7 @@ window.addEventListener("scroll", scrollActive);
 
 /* ----- INITIALIZE PARTICLES JS ----- */
 document.addEventListener("DOMContentLoaded", function () {
-  // Direct initialization instead of loading from an external file
   if (typeof particlesJS !== "undefined") {
-    // The particles.js configuration is now directly included here
     particlesJS("particles-js", {
       particles: {
         number: {
@@ -179,11 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
       interactivity: {
-        detect_on: "window", // Changed from canvas to window for better detection
+        detect_on: "window",
         events: {
           onhover: {
             enable: true,
-            mode: "grab", // Changed from repulse to grab for a more interactive effect
+            mode: "grab",
           },
           onclick: {
             enable: true,
@@ -193,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         modes: {
           grab: {
-            distance: 140, // Increased interaction distance
+            distance: 140,
             line_linked: {
               opacity: 1,
             },
@@ -224,33 +221,29 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("particles.js library not loaded");
   }
 });
+
 /* ----- DARK MODE FUNCTIONALITY ----- */
 document.addEventListener("DOMContentLoaded", function () {
   const darkModeToggle = document.getElementById("darkModeToggle");
   const darkModeIcon = darkModeToggle.querySelector("i");
 
-  // Check if user has a preference saved
   const savedTheme = localStorage.getItem("theme");
 
-  // Apply saved theme or default
   if (savedTheme === "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
     darkModeIcon.classList.remove("uil-moon");
     darkModeIcon.classList.add("uil-sun");
   }
 
-  // Toggle dark mode
   darkModeToggle.addEventListener("click", function () {
     const currentTheme = document.documentElement.getAttribute("data-theme");
 
     if (currentTheme === "dark") {
-      // Switch to light mode
       document.documentElement.removeAttribute("data-theme");
       localStorage.setItem("theme", "light");
       darkModeIcon.classList.remove("uil-sun");
       darkModeIcon.classList.add("uil-moon");
     } else {
-      // Switch to dark mode
       document.documentElement.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
       darkModeIcon.classList.remove("uil-moon");
@@ -258,13 +251,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Add event listener to check for system preference changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
       const newColorScheme = e.matches ? "dark" : "light";
 
-      // Only apply if user hasn't manually set a preference
       if (!localStorage.getItem("theme")) {
         if (newColorScheme === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
@@ -278,7 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  // Check system preference on initial load if no saved preference
   if (
     !savedTheme &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -287,4 +277,55 @@ document.addEventListener("DOMContentLoaded", function () {
     darkModeIcon.classList.remove("uil-moon");
     darkModeIcon.classList.add("uil-sun");
   }
+});
+
+/* ----- CUSTOM CURSOR FUNCTIONALITY ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  cursor.classList.add("cursor");
+  document.body.appendChild(cursor);
+
+  // Remove default cursor
+  document.body.style.cursor = "none";
+
+  document.addEventListener("mousemove", (e) => {
+    requestAnimationFrame(() => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1.5)";
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+  });
+
+  // Check if dark mode is enabled
+  const isDarkMode =
+    document.documentElement.getAttribute("data-theme") === "dark";
+
+  // Set cursor style based on theme
+  cursor.style.borderColor = isDarkMode ? "white" : "orange";
+
+  // On theme toggle, update cursor style
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  darkModeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    cursor.style.borderColor = currentTheme === "dark" ? "white" : "orange";
+  });
+
+  // Pulse effect on hover over links and buttons
+  const interactiveElements = document.querySelectorAll("a, button");
+  interactiveElements.forEach((element) => {
+    element.style.cursor = "none"; // Remove default cursor
+    element.addEventListener("mouseenter", () => {
+      cursor.classList.add("pulse");
+    });
+    element.addEventListener("mouseleave", () => {
+      cursor.classList.remove("pulse");
+    });
+  });
 });

@@ -771,7 +771,31 @@ footer {
 }
 
 [data-theme="dark"] .social_icons .icon {
-  background: var(--color-white);
+  background: var(--color-white); /* Keep buttons white */
+  color: var(--third-color); /* Icon color remains visible */
+}
+
+[data-theme="dark"] .social_icons .icon i {
+  color: var(--third-color); /* Ensure icons stay white */
+}
+
+[data-theme="dark"] .social_icons .icon:hover {
+  background: var(--first-color); /* Change background on hover */
+  color: var(--color-white); /* Ensure icon color contrasts */
+}
+
+[data-theme="dark"] .footer-social-icons .icon {
+  background: var(--color-white); /* Keep footer buttons white */
+  color: var(--third-color); /* Icon color remains visible */
+}
+
+[data-theme="dark"] .footer-social-icons .icon i {
+  color: var(--third-color); /* Ensure footer icons stay white */
+}
+
+[data-theme="dark"] .footer-social-icons .icon:hover {
+  background: var(--first-color); /* Change background on hover */
+  color: var(--color-white); /* Ensure icon color contrasts */
 }
 
 [data-theme="dark"] .nav-menu.responsive {
@@ -801,4 +825,57 @@ footer,
 .nav-menu.responsive {
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease;
+}
+
+/* Hide the default cursor */
+body {
+  cursor: none !important;
+}
+
+a,
+button {
+  cursor: none !important;
+}
+.cursor {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(12, 1, 1, 0.9);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(53, 6, 50, 0.9), 0 0 20px rgba(53, 6, 50, 0.7s),
+    0 0 40px rgba(255, 255, 255, 0.5);
+
+  transition: transform 0.05s linear;
+}
+
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border: 2px solid orange; /* Default color for light mode */
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, border-color 0.3s ease;
+  z-index: 10000;
+}
+
+/* Pulse Effect */
+.cursor.pulse {
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
