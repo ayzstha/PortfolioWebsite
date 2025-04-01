@@ -17,6 +17,9 @@
     <title>Portfolio | ayzstha</title>
 </head>
 <body>
+   <!-- Particle -->
+   <div id="particles-js" class="particles-js"></div>
+   
    <div class="container">
     <!-- --------------- HEADER --------------- -->
       <nav id="header">
@@ -54,6 +57,11 @@
                 <button class="btn">View my Resume<i class="uil uil-file-alt"></i></button>
             </a>
         </div>
+        <div class="dark-mode-toggle">
+            <button id="darkModeToggle" class="btn dark-toggle">
+              <i class="uil uil-moon"></i>
+            </button>
+          </div>
         <div class="nav-menu-btn">
             <i class="uil uil-bars" onclick="myMenuFunction()"></i>
         </div>
@@ -321,5 +329,12 @@
 
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/main.js"></script>
+
+    <!-- PARTICLE JS -->
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- Your JS files -->
+<script src="assets/js/particles-config.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
