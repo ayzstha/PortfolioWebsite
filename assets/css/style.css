@@ -46,8 +46,6 @@ html {
   background: #bbb;
 }
 
-/* ---##-- REUSABLE CSS --##--- */
-
 /* ----- GLOBAL BUTTON DESIGN ----- */
 .btn {
   font-weight: 500;
@@ -188,6 +186,8 @@ nav {
 .typedText {
   text-transform: capitalize;
   color: var(--text-color-third);
+  display: inline-block;
+  animation: typingBounce 0.3s ease-in-out;
 }
 .featured-text-info {
   font-size: 15px;
@@ -253,7 +253,7 @@ nav {
 }
 .scroll-btn {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   left: 50%;
   translate: -50%;
   display: flex;
@@ -267,9 +267,41 @@ nav {
   background: var(--color-white);
   border-radius: 30px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  animation: scrollBounce 2s ease-in-out infinite;
 }
 .scroll-btn i {
   font-size: 20px;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-5px) translateX(-50%);
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes typingBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
 }
 
 /* ----- MAIN BOX ----- */
@@ -314,14 +346,14 @@ h3 {
   align-items: center;
   flex-direction: column;
   padding-block: 30px 70px;
-  padding-inline: 20px;
+  padding-inline: 50px;
   width: 100%;
   background: var(--color-white);
   box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
   border-radius: 20px;
 }
 .about-info p {
-  text-align: center;
+  text-align: left;
   font-size: 15px;
   color: #777;
 }
@@ -763,11 +795,37 @@ footer {
 }
 
 [data-theme="dark"] footer {
-  background: var(--footer-bg);
+  background: #121212; /* Match the dark mode body-color */
+  color: #ffffff;
 }
 
 [data-theme="dark"] .footer_menu_list a {
-  color: var(--text-color-second);
+  color: #e0e0e0; /* Match the dark mode text-color-second */
+}
+
+[data-theme="dark"] .footer_menu_list a:hover {
+  color: var(--first-color);
+}
+
+[data-theme="dark"] .top-footer p {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .bottom-footer {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .footer-social-icons .icon {
+  background: #1e1e1e; /* Match the dark mode color-white variable */
+  border: 1px solid #333;
+}
+
+[data-theme="dark"] .footer-social-icons .icon i {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .footer-social-icons .icon:hover {
+  background: var(--first-color);
 }
 
 [data-theme="dark"] .social_icons .icon {
@@ -855,12 +913,33 @@ button {
   position: fixed;
   width: 10px;
   height: 10px;
-  border: 2px solid orange; /* Default color for light mode */
+  background-color: rgba(255, 110, 21, 0.8); /* Semi-transparent orange */
+  border: 2px solid rgb(255, 110, 21);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, border-color 0.3s ease;
   z-index: 10000;
+  box-shadow: 
+    0 0 5px rgb(255, 110, 21),
+    0 0 10px rgb(255, 110, 21),
+    0 0 15px rgba(255, 110, 21, 0.5);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgb(255, 110, 21),
+      0 0 10px rgb(255, 110, 21),
+      0 0 15px rgba(255, 110, 21, 0.5);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px rgb(255, 110, 21),
+      0 0 20px rgb(255, 110, 21),
+      0 0 30px rgba(255, 110, 21, 0.5);
+  }
 }
 
 /* Pulse Effect */
