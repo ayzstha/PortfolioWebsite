@@ -13,25 +13,7 @@
  * @version 1.0
  */
 
-/**
- * Page Loader
- * Provides a smooth loading animation and fades out when the page is ready
- */
-window.addEventListener("load", function () {
-  // Hide the loader once the page is fully loaded
-  const pageLoader = document.getElementById("page-loader");
-
-  // Add a small delay for a smoother transition
-  setTimeout(() => {
-    // Fade out the loader
-    pageLoader.style.opacity = "0";
-
-    // After animation completes, hide it completely
-    setTimeout(() => {
-      pageLoader.style.display = "none";
-    }, 500);
-  }, 500);
-});
+// Main code starts below
 
 /**
  * Toggles the responsive navigation menu on mobile devices
@@ -117,7 +99,17 @@ sr.reveal(".featured-image", { delay: 300 }); // Longer delay for featured image
  * Project Section Animations
  * Animates project boxes with interval between each reveal
  */
-sr.reveal(".project-box", { interval: 200 }); // Each box appears 200ms after the previous one
+sr.reveal(".project-box", {
+  origin: "bottom", // Animation starts from bottom
+  distance: "40px", // Distance elements move
+  duration: 1500, // Animation duration in milliseconds
+  delay: 200, // Base delay
+  interval: 150, // Staggered delay between items
+  easing: "cubic-bezier(0.5, 0, 0, 1)", // Smooth easing function
+  reset: false, // Don't repeat animation on re-entry
+  opacity: 0, // Start fully transparent
+  scale: 0.9, // Start slightly smaller
+}); // Enhanced animation configuration
 
 /**
  * Heading Animations
@@ -163,18 +155,8 @@ srRight.reveal(".form-control", { delay: 100 }); // Form elements
 /**
  * Project Cards Animation
  * Creates a staggered entrance effect for project cards
+ * Note: Using enhanced configuration instead of the simpler version above
  */
-ScrollReveal().reveal(".project-box", {
-  origin: "bottom", // Animation starts from bottom
-  distance: "40px", // Distance elements move
-  duration: 1500, // Animation duration in milliseconds
-  delay: 200, // Base delay
-  interval: 150, // Staggered delay between items
-  easing: "cubic-bezier(0.5, 0, 0, 1)", // Smooth easing function
-  reset: false, // Don't repeat animation on re-entry for a cleaner experience
-  opacity: 0, // Start fully transparent
-  scale: 0.9, // Start slightly smaller
-});
 
 /**
  * Navigation Active Link Highlighting
@@ -236,8 +218,8 @@ window.addEventListener("scroll", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Check if particles.js library is loaded before initializing
   if (typeof particlesJS !== "undefined") {
-    // Particles.js configuration
-    const particlesConfig = {
+    // Particles.js configuration - define globally for potential reuse
+    window.particlesConfig = {
       particles: {
         number: {
           value: 80, // Number of particles
@@ -341,10 +323,8 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
       retina_detect: true, // Enable retina display support
-    };
-
-    // Initialize particles with the configuration
-    particlesJS("particles-js", particlesConfig);
+    }; // Initialize particles with the configuration
+    particlesJS("particles-js", window.particlesConfig);
     console.log("particles.js initialized successfully");
   } else {
     console.error(
@@ -360,6 +340,25 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Cache DOM elements
   const darkModeToggle = document.getElementById("darkModeToggle");
+
+  // Fix for the double circle issue when toggling dark mode
+  if (darkModeToggle) {
+    // Remove any browser default focus styling after click
+    darkModeToggle.addEventListener("click", function () {
+      // Remove focus after click to avoid the double circle
+      setTimeout(() => {
+        this.blur();
+      }, 100);
+    });
+
+    // Remove focus styling on mousedown to prevent focus ring during mouse usage
+    darkModeToggle.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      this.style.outline = "none";
+    });
+  }
+
+  // Theme toggle functionality continues
   const darkModeIcon = darkModeToggle.querySelector("i");
   const htmlElement = document.documentElement;
 
