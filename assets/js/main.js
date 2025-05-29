@@ -9,8 +9,8 @@
  * - Dark mode functionality
  * - Custom cursor effects
  *
- * @author Portfolio Owner
- * @version 1.0
+ * @author Aayush Shrestha
+ * @version 2.0
  */
 
 // Main code starts below
