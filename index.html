@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- 
+      Portfolio Website
+      A responsive personal portfolio website showcasing skills, projects and contact information.
+      Author: Aayush Shrestha
+    -->
     <!-- Meta Information -->
     <meta
       name="google-site-verification"
@@ -8,6 +13,30 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Aayush Shrestha - Software Developer specializing in Python, Java, and web development. Portfolio showcasing projects, skills, and experience."
+    />
+    <meta
+      name="keywords"
+      content="portfolio, web developer, python, java, software engineer, full stack developer, Aayush Shrestha"
+    />
+    <!-- Open Graph Meta Tags for social media sharing -->
+    <meta property="og:title" content="Aayush Shrestha | Portfolio" />
+    <meta
+      property="og:description"
+      content="Software Developer specializing in Python, Java, and web development."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ayzstha.github.io/" />
+    <meta property="og:image" content="assets/images/avatar.png" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aayush Shrestha | Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Software Developer specializing in Python, Java, and web development."
+    />
 
     <!-- Unicons CSS -->
     <link
@@ -28,6 +57,14 @@
     <title>Portfolio | ayzstha</title>
   </head>
   <body>
+    <!-- Page Loader -->
+    <div id="page-loader">
+      <div class="loader-content">
+        <div class="spinner"></div>
+        <h2>Loading<span class="dots"></span></h2>
+      </div>
+    </div>
+
     <!-- Particle Background -->
     <div id="particles-js" class="particles-js"></div>
 
@@ -56,10 +93,6 @@
               <div class="circle"></div>
             </li>
             <li class="nav_list">
-              <a href="#clearwater" class="nav-link">Machine Learning</a>
-              <div class="circle"></div>
-            </li>
-            <li class="nav_list">
               <a href="#contact" class="nav-link">Contact</a>
               <div class="circle"></div>
             </li>
@@ -73,7 +106,7 @@
           </a>
         </div>
         <div class="dark-mode-toggle">
-          <button id="darkModeToggle" class="btn dark-toggle">
+          <button id="darkModeToggle" class="dark-toggle">
             <i class="uil uil-moon"></i>
           </button>
         </div>
@@ -148,7 +181,7 @@
           </div>
           <div class="featured-image">
             <div class="image">
-              <img src="assets/images/avatar.png" alt="avatar" />
+              <img src="assets/images/avatar.png" alt="avatar" loading="lazy" />
             </div>
           </div>
           <div class="scroll-icon-box">
@@ -235,70 +268,86 @@
             </div>
           </div>
         </section>
-
         <!-- Projects Section -->
         <section class="section" id="projects">
           <div class="top-header">
             <h1>Projects</h1>
+            <span>Check out some of my notable work</span>
           </div>
           <div class="project-container">
             <div class="project-box">
-              <i class="uil uil-briefcase-alt"></i>
-              <h3>Completed</h3>
-              <label>5+ Finished Projects</label>
-            </div>
-            <div class="project-box">
-              <i class="uil uil-users-alt"></i>
-              <h3>Collaborations</h3>
-              <label>3+ Collaborative Projects</label>
-            </div>
-            <div class="project-box">
-              <i class="uil uil-award"></i>
-              <h3>Experience</h3>
-              <label>5+ Years in Coding</label>
-            </div>
-          </div>
-        </section>
-
-        <!-- Clearwater Analytics Section -->
-        <section class="section" id="clearwater">
-          <div class="top-header">
-            <h1>Clearwater Analytics: Data Analyst</h1>
-            <span>Statistical Machine Learning Course Project</span>
-            <p style="font-size: 0.9em; color: #666; margin-top: 10px">
-              Note: This section is for Dr. Eric Friedlander's course only,
-              potential recruiters please disregard.
-            </p>
-          </div>
-          <div class="ca-container">
-            <div class="ca-box">
-              <i class="uil uil-file-alt"></i>
-              <h3>Resume</h3>
+              <i class="uil uil-server-network"></i>
+              <h3>Cisco Reset Tool</h3>
+              <p>A tool for factory resetting Cisco switches</p>
               <a
-                href="assets/machine-learning/clearwater_resume.pdf"
+                href="https://github.com/ayzstha/Cisco-Switch-Factory-Reset-Tool"
                 target="_blank"
               >
-                <button class="btn">View Resume</button>
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
               </a>
             </div>
-            <div class="ca-box">
-              <i class="uil uil-envelope"></i>
-              <h3>Cover Letter</h3>
+            <div class="project-box">
+              <i class="uil uil-puzzle-piece"></i>
+              <h3>Wordle Solver</h3>
+              <p>A UI interface to assist with daily Wordle</p>
               <a
-                href="assets/machine-learning/clearwater_cover.pdf"
+                href="https://github.com/ayzstha/Wordle-Solver"
                 target="_blank"
               >
-                <button class="btn">View Cover Letter</button>
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
               </a>
             </div>
-            <div class="ca-box">
-              <i class="uil uil-analysis"></i>
-              <h3>Analysis</h3>
+            <div class="project-box">
+              <i class="uil uil-balance-scale"></i>
+              <h3>Senate Voting</h3>
+              <p>A secure voting system for senate elections</p>
               <a
-                href="assets/machine-learning/data-analysis.html"
+                href="https://github.com/ayzstha/Senate-Voting-System"
                 target="_blank"
               >
-                <button class="btn">View Analysis</button>
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
+              </a>
+            </div>
+            <div class="project-box">
+              <i class="uil uil-robot"></i>
+              <h3>trAIde</h3>
+              <p>AI-powered trading assistant</p>
+              <a href="https://github.com/ayzstha/trAIde" target="_blank">
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
+              </a>
+            </div>
+            <div class="project-box">
+              <i class="uil uil-chart-growth"></i>
+              <h3>Census Prediction</h3>
+              <p>ML model for 2020 Census Income predictions</p>
+              <a
+                href="https://github.com/ayzstha/ML-2020-Census-Prediction"
+                target="_blank"
+              >
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
+              </a>
+            </div>
+            <div class="project-box">
+              <i class="uil uil-user-square"></i>
+              <h3>CofI MAPS Profiles</h3>
+              <p>College of Idaho MAPS Department Student Profiles</p>
+              <a
+                href="https://github.com/ayzstha/cofi-maps-profiles"
+                target="_blank"
+              >
+                <button class="btn">
+                  View Project <i class="uil uil-github"></i>
+                </button>
               </a>
             </div>
           </div>
@@ -327,26 +376,42 @@
                     value="4b5cabd2-eaa0-4aec-9ce9-67d6c8fb1687"
                   />
                   <div class="form-inputs">
-                    <input
-                      type="text"
-                      name="name"
-                      class="input-field"
-                      placeholder="Name"
-                      required
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      class="input-field"
-                      placeholder="Email"
-                      required
-                    />
+                    <div class="input-group">
+                      <label for="name" class="sr-only">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="input-field"
+                        placeholder="Name"
+                        required
+                        aria-required="true"
+                        minlength="2"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label for="email" class="sr-only">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="input-field"
+                        placeholder="Email"
+                        required
+                        aria-required="true"
+                        autocomplete="email"
+                      />
+                    </div>
                   </div>
                   <div class="text-area">
+                    <label for="message" class="sr-only">Message</label>
                     <textarea
+                      id="message"
                       name="message"
                       placeholder="Message"
                       required
+                      aria-required="true"
+                      minlength="10"
                     ></textarea>
                   </div>
                   <div class="form-button">
@@ -379,9 +444,6 @@
             <li class="footer_menu_list"><a href="#home">Home</a></li>
             <li class="footer_menu_list"><a href="#about">About</a></li>
             <li class="footer_menu_list"><a href="#projects">Projects</a></li>
-            <li class="footer_menu_list">
-              <a href="#clearwater">Machine Learning</a>
-            </li>
             <li class="footer_menu_list"><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -422,21 +484,19 @@
         </div>
         <div class="bottom-footer">
           <p>
-            Copyright &copy;
+            Copyright &copy; 2025
             <a href="#home" style="text-decoration: none">Aayush Shrestha</a> -
             All rights reserved
           </p>
         </div>
       </footer>
     </div>
-
     <!-- External JS Scripts -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <!-- Local JS Scripts -->
-    <script src="assets/js/particles-config.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

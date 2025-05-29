@@ -1,19 +1,36 @@
-/* ----- POPPINS FONT Link ----- */
+/**
+ * Portfolio Website Stylesheet
+ * 
+ * This stylesheet contains all the styling for the personal portfolio website including:
+ * - Color scheme and variables
+ * - Layout and positioning
+ * - Animations and transitions
+ * - Responsive design adaptations
+ * - Dark mode theme
+ * - Custom cursor effects
+ * 
+ * @author Aayush Shrestha
+ * @version 1.1
+ */
+
+/* ----- FONTS ----- */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* ----- VARIABLES ----- */
+/* ----- CSS VARIABLES ----- */
 :root {
+  /* Color Scheme */
   --body-color: rgb(250, 250, 250);
   --color-white: rgb(255, 255, 255);
-
   --text-color-second: rgb(68, 68, 68);
   --text-color-third: rgb(255, 110, 21);
 
-  --first-color: rgb(255, 110, 21);
-  --first-color-hover: rgb(237, 157, 19);
+  /* Brand Colors */
+  --first-color: rgb(255, 110, 21); /* Primary orange */
+  --first-color-hover: rgb(237, 157, 19); /* Hover state */
+  --second-color: rgb(255, 110, 21); /* Secondary color */
+  --third-color: rgb(0, 0, 0); /* Text black */
 
-  --second-color: rgb(255, 110, 21);
-  --third-color: rgb(0, 0, 0);
+  /* Effects */
   --first-shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -28,6 +45,25 @@
 /* ----- SMOOTH SCROLL ----- */
 html {
   scroll-behavior: smooth;
+}
+
+/* ----- ACCESSIBILITY FOCUS STYLES ----- */
+/* Improved focus states for keyboard navigation */
+:focus {
+  outline: 3px solid var(--first-color);
+  outline-offset: 2px;
+}
+
+/* Special focus styles for interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--first-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(255, 110, 21, 0.3);
+  transition: outline 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* ----- CHANGE THE SCROLL BAR DESIGN ----- */
@@ -275,7 +311,11 @@ nav {
 }
 
 @keyframes scrollBounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0) translateX(-50%);
   }
   40% {
@@ -287,7 +327,11 @@ nav {
 }
 
 @keyframes arrowBounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -299,9 +343,15 @@ nav {
 }
 
 @keyframes typingBounce {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* ----- MAIN BOX ----- */
@@ -388,7 +438,11 @@ h3 {
   border-radius: 5px;
 }
 
-/* ----- PROJECTS BOX ----- */
+/* ----- PROJECTS SECTION ----- */
+/**
+ * Project container grid layout
+ * Responsive design that adapts to different screen sizes
+ */
 .project-container {
   display: flex;
   width: 100%;
@@ -396,30 +450,81 @@ h3 {
   gap: 20px;
   flex-wrap: wrap;
 }
+
+/**
+ * Individual project box styling
+ * Features hover effects and interactive elements
+ */
 .project-box {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 30%;
+  width: 30%; /* Three columns on desktop */
   height: 250px;
   background: var(--color-white);
   border-radius: 20px;
   box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
   overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Project box hover effect */
+.project-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 1px 10px 15px 5px var(--first-shadow-color);
+}
+
+/* Project icon styling */
 .project-box > i {
-  font-size: 50px;
-  color: #ff6e15;
-  margin-bottom: 25px;
+  font-size: 40px;
+  color: var(--first-color);
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
-.project-box label {
-  font-size: 15px;
+
+/* Project title */
+.project-box > h3 {
+  margin-bottom: 10px;
+  color: var(--text-color-second);
+  transition: color 0.3s ease;
+}
+
+/* Project description */
+.project-box > p {
+  font-size: 14px;
   color: #777;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
 }
-.project-box::after,
-.contact-info::after {
+
+/* Project button container */
+.project-box > a {
+  margin-top: auto;
+  text-decoration: none;
+}
+
+/* Project button */
+.project-box .btn {
+  font-size: 13px;
+  padding: 8px 16px;
+  background: var(--color-white);
+  border: 1px solid var(--first-color);
+  color: var(--first-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Project button hover */
+.project-box .btn:hover {
+  background: var(--first-color);
+  color: var(--color-white);
+}
+
+/* Overlay effect on hover */
+.project-box::after {
   content: "";
   position: absolute;
   bottom: -100%;
@@ -428,47 +533,29 @@ h3 {
   height: 100%;
   transition: 0.4s;
   z-index: 1;
+  opacity: 0.9;
 }
-.project-box:hover.project-box::after,
-.contact-info:hover.contact-info::after {
+
+.project-box:hover.project-box::after {
   bottom: 0;
 }
+
+/* Ensure elements are above the overlay */
 .project-box:hover.project-box i,
 .project-box:hover.project-box > h3,
-.project-box:hover.project-box > label {
+.project-box:hover.project-box > p,
+.project-box:hover.project-box a {
   color: var(--color-white);
   z-index: 2;
 }
-/* ----- CLEARWATER ANALYTICS ----- */
-.ca-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+
+.project-box:hover.project-box .btn {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+  z-index: 2;
 }
-.ca-box {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 30%;
-  height: 250px;
-  background: var(--color-white);
-  border-radius: 20px;
-  box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
-  overflow: hidden;
-}
-.ca-box > i {
-  font-size: 50px;
-  color: #ff6e15;
-  margin-bottom: 25px;
-}
-.ca-box label {
-  font-size: 15px;
-  color: #777;
-}
+/* This section previously contained Clearwater Analytics styles which have been removed */
 
 /* ----- CONTACT BOX ----- */
 .contact-info {
@@ -557,7 +644,10 @@ textarea {
   rotate: -45deg;
 }
 
-/* ----- FOOTER BOX ----- */
+/**
+ * Footer Section
+ * Contains site branding, navigation links, social media icons, and copyright
+ */
 footer {
   display: flex;
   justify-content: center;
@@ -566,40 +656,69 @@ footer {
   row-gap: 30px;
   background: #f8f8f8;
   padding-block: 40px 60px;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+/* Footer branding */
 .top-footer p {
   font-size: 25px;
   font-weight: 600;
+  color: var(--text-color-second);
 }
+
+/* Footer navigation menu */
 .middle-footer .footer-menu {
   display: flex;
+  flex-wrap: wrap; /* Allow menu to wrap on small screens */
+  justify-content: center;
+  padding: 10px 0;
 }
+
 .footer_menu_list {
   list-style: none;
 }
+
 .footer_menu_list a {
   text-decoration: none;
   color: var(--text-color-second);
   font-weight: 500;
   margin-inline: 20px;
+  transition: color 0.3s ease;
 }
+
+.footer_menu_list a:hover {
+  color: var(--first-color);
+}
+
+/* Footer social icons */
 .footer-social-icons {
   display: flex;
   gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
+/* Copyright notice */
 .bottom-footer {
   font-size: 14px;
   margin-top: 10px;
+  text-align: center;
 }
 
-/* ----- PARTICLES BACKGROUND ----- */
+/**
+ * Particles.js Background
+ * Creates an interactive animated particle background
+ * The particles are rendered in a fixed canvas behind all content
+ */
 .particles-js {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -1; /* Ensure particles stay behind all content */
+  overflow: hidden; /* Prevent any scroll issues */
 }
 
 /* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
@@ -614,18 +733,25 @@ footer {
   }
 }
 
-/* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
+/**
+ * Responsive Design - Tablet (900px and below)
+ * Adjusts layout for medium-sized screens
+ */
 @media only screen and (max-width: 900px) {
+  /* Hide resume button in header */
   .nav-button {
     display: none;
   }
+
+  /* Mobile menu styles */
   .nav-menu.responsive {
-    left: 0;
+    left: 0; /* Show menu when responsive class is added */
   }
+
   .nav-menu {
     position: fixed;
     top: 80px;
-    left: -100%;
+    left: -100%; /* Hide menu by default */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -635,71 +761,97 @@ footer {
     min-height: 450px;
     height: 90vh;
     transition: 0.3s;
+    z-index: 99;
   }
+
+  /* Stack menu items vertically */
   .nav_menu_list {
     flex-direction: column;
   }
+
+  /* Show hamburger menu button */
   .nav-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  /* Hero section adjustments */
   .featured-box {
     flex-direction: column;
     justify-content: center;
     height: 100vh;
   }
+
   .featured-text {
     width: 100%;
-    order: 2;
+    order: 2; /* Show text after image on mobile */
     justify-content: center;
     align-content: flex-start;
     min-height: 60vh;
+    padding: 20px;
+    text-align: center;
   }
+
   .social_icons {
     margin-top: 2em;
+    justify-content: center;
   }
+
   .featured-image {
-    order: 1;
+    order: 1; /* Show image first on mobile */
     justify-content: center;
     min-height: 150px;
     width: 100%;
     margin-top: 65px;
   }
+
   .image,
   .image img {
     width: 150px;
     height: 150px;
   }
+
+  /* Stack rows into columns */
   .row {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 50px;
   }
+
   .col {
     display: flex;
     justify-content: center;
     width: 100%;
   }
+  /* Project grid adjustments - 2 columns on tablets */
+  .project-box {
+    width: 47%; /* Slightly less than 50% to account for gap */
+  }
+
+  /* Full width containers */
   .about-info,
   .contact-info {
     width: 100%;
   }
-  .project-container {
-    justify-content: center;
-  }
-  .project-box {
-    width: 80%;
-  }
 }
 
-/* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
-
+/**
+ * Responsive Design - Mobile (540px and below)
+ * Optimizes layout for small screens
+ */
 @media only screen and (max-width: 540px) {
+  /* Smaller headings */
   .featured-name {
     font-size: 40px;
   }
+
+  /* Full width projects */
+  .project-container {
+    justify-content: center;
+  }
+
   .project-box {
     width: 100%;
   }
@@ -708,6 +860,115 @@ footer {
   }
   .input-field {
     width: 100%;
+  }
+
+  /* Adjust header elements */
+  .nav-logo {
+    font-size: 20px;
+  }
+
+  .nav-button .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/**
+ * Responsive Design - Very Small Mobile (375px and below)
+ * Further optimizes layout for extremely small screens
+ */
+@media only screen and (max-width: 375px) {
+  /* Extremely small screens adjustments */
+  .featured-name {
+    font-size: 32px;
+  }
+
+  /* Smaller padding and margins for tiny screens */
+  .top-header {
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+
+  /* Adjust button sizes for better tapping */
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* Reduce icon sizes */
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Adjust spacing for form elements */
+  .form-control {
+    padding: 15px;
+  }
+
+  .text-area textarea {
+    min-height: 120px;
+  }
+
+  /* Adjust skills box for better readability */
+  .skills-list {
+    gap: 6px;
+  }
+
+  .skills-list span {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/**
+ * Responsive Design - Small Height Screens
+ * Adjusts layout for devices with limited vertical space
+ */
+@media only screen and (max-height: 700px) {
+  .featured-box {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 0 20px;
+  }
+
+  .featured-text,
+  .featured-image {
+    min-height: auto;
+  }
+
+  .social_icons {
+    margin-top: 1em;
+  }
+
+  .image,
+  .image img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/**
+ * Responsive Design - Modern Large Phones
+ * Optimized for modern phones with larger screens but still requiring mobile UI
+ */
+@media only screen and (min-width: 376px) and (max-width: 428px) {
+  .featured-text-info {
+    width: 100%;
+  }
+
+  .featured-text-btn {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .project-box {
+    padding: 20px;
+  }
+
+  .nav-menu.responsive {
+    top: 70px;
   }
 }
 /* ----- DARK MODE STYLES ----- */
@@ -739,27 +1000,105 @@ footer {
   --footer-bg: #1a1a1a;
 }
 
-/* Dark mode toggle button */
+/**
+ * Dark Mode Toggle Button
+ * Styled as a circular button with centered icon
+ * Design matches the brand aesthetics in both light and dark modes
+ */
 .dark-mode-toggle {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-right: 20px;
 }
 
 .dark-toggle {
-  background: transparent;
+  background-color: var(
+    --color-white
+  ) !important; /* Use theme variable for consistency */
   color: var(--text-color-second);
-  padding: 8px;
-  border-radius: 50%;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
   width: 40px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  line-height: 1;
+  border: 2px solid var(--first-color) !important; /* Use brand color for border */
+  box-shadow: 0 3px 8px rgba(255, 110, 21, 0.2) !important; /* Brand colored shadow */
+  overflow: hidden !important; /* Ensure content stays within circular boundary */
+  cursor: pointer;
+  transition: all 0.3s ease !important; /* Smooth transition between states */
+}
+
+/* Override any btn class styles */
+.dark-toggle.btn {
+  padding: 0 !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .dark-toggle i {
   font-size: 20px;
+  margin: 0 !important; /* Remove any margin that might be coming from btn i styling */
+  padding: 0;
+  /* Center the icon precisely */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(
+    --first-color
+  ) !important; /* Use brand orange color in both modes */
+  transition: transform 0.3s ease, color 0.3s ease;
+  /* Add rotation animation when icons change */
+  animation: iconRotate 0.5s ease forwards;
+}
+
+/* Add keyframes for icon rotation when switching between dark/light mode */
+@keyframes iconRotate {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* Dark mode icon styling - keeping it consistent with light mode */
+[data-theme="dark"] .dark-toggle i {
+  color: var(
+    --first-color
+  ) !important; /* Same color as light mode for consistency */
+}
+
+/* Button hover effect in light mode */
+.dark-toggle:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(255, 110, 21, 0.3) !important;
+}
+
+/* Icon hover effect - same in both modes */
+.dark-toggle:hover i {
+  transform: translate(-50%, -50%) rotate(15deg);
+  animation: none; /* Disable rotation animation on hover */
+}
+
+/* Same hover effect in dark mode for consistency */
+[data-theme="dark"] .dark-toggle:hover i {
+  transform: translate(-50%, -50%) rotate(15deg);
+  animation: none; /* Disable rotation animation on hover */
 }
 
 /* Dark mode specific styles */
@@ -777,8 +1116,7 @@ footer {
 }
 
 [data-theme="dark"] .about-info,
-[data-theme="dark"] .project-box,
-[data-theme="dark"] .ca-box {
+[data-theme="dark"] .project-box {
   background-color: var(--color-white);
   color: var(--text-color-second);
 }
@@ -862,6 +1200,19 @@ footer {
 
 [data-theme="dark"] .dark-toggle {
   color: var(--text-color-second);
+  background-color: var(
+    --color-white
+  ) !important; /* Use theme variable for consistency */
+  border-color: var(
+    --first-color
+  ) !important; /* Same border color as light mode */
+  box-shadow: 0 3px 8px rgba(255, 110, 21, 0.25) !important; /* Similar shadow to light mode */
+}
+
+/* Hover effect in dark mode - matches light mode behavior */
+[data-theme="dark"] .dark-toggle:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(255, 110, 21, 0.4) !important;
 }
 
 /* Adjust nav menu shadow for dark mode */
@@ -869,12 +1220,14 @@ footer {
   box-shadow: 0 1px 6px rgba(255, 255, 255, 0.1);
 }
 
-/* Transition effect */
+/**
+ * Global Transition Effects
+ * Smooths color and property changes across the site
+ */
 body,
 nav,
 .about-info,
 .project-box,
-.ca-box,
 .input-field,
 textarea,
 footer,
@@ -885,30 +1238,28 @@ footer,
     border-color 0.3s ease;
 }
 
-/* Hide the default cursor */
+/**
+ * Custom Cursor Styling
+ * Replaces the default cursor with a custom-styled dot that follows the mouse
+ */
+
+/* Hide the default cursor on all elements */
 body {
   cursor: none !important;
 }
 
 a,
-button {
+button,
+input,
+textarea,
+select {
   cursor: none !important;
 }
-.cursor {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(12, 1, 1, 0.9);
-  border-radius: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  box-shadow: 0 0 10px rgba(53, 6, 50, 0.9), 0 0 20px rgba(53, 6, 50, 0.7s),
-    0 0 40px rgba(255, 255, 255, 0.5);
 
-  transition: transform 0.05s linear;
-}
-
-/* Custom Cursor */
+/**
+ * Custom Cursor Element
+ * A glowing dot that follows the mouse pointer
+ */
 .cursor {
   position: fixed;
   width: 10px;
@@ -916,53 +1267,79 @@ button {
   background-color: rgba(255, 110, 21, 0.8); /* Semi-transparent orange */
   border: 2px solid rgb(255, 110, 21);
   border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
+  pointer-events: none; /* Allows clicking through the cursor */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Centers the cursor on the mouse position */
   transition: transform 0.1s ease, border-color 0.3s ease;
-  z-index: 10000;
-  box-shadow: 
-    0 0 5px rgb(255, 110, 21),
-    0 0 10px rgb(255, 110, 21),
+  z-index: 10000; /* Ensures cursor is above all other elements */
+
+  /* Layered glow effect */
+  box-shadow: 0 0 5px rgb(255, 110, 21), 0 0 10px rgb(255, 110, 21),
     0 0 15px rgba(255, 110, 21, 0.5);
+
+  /* Continuous glow animation */
   animation: glow 2s ease-in-out infinite;
 }
 
+/**
+ * Cursor Glow Animation
+ * Creates a pulsating glow effect around the cursor
+ */
 @keyframes glow {
-  0%, 100% {
-    box-shadow: 
-      0 0 5px rgb(255, 110, 21),
-      0 0 10px rgb(255, 110, 21),
+  /* Start and end states */
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgb(255, 110, 21), 0 0 10px rgb(255, 110, 21),
       0 0 15px rgba(255, 110, 21, 0.5);
   }
+  /* Middle state with enhanced glow */
   50% {
-    box-shadow: 
-      0 0 10px rgb(255, 110, 21),
-      0 0 20px rgb(255, 110, 21),
+    box-shadow: 0 0 10px rgb(255, 110, 21), 0 0 20px rgb(255, 110, 21),
       0 0 30px rgba(255, 110, 21, 0.5);
   }
 }
 
-/* Pulse Effect */
+/**
+ * Cursor Hover Pulse Effect
+ * Applied when hovering over interactive elements
+ */
 .cursor.pulse {
   animation: pulse 0.5s infinite;
 }
 
+/**
+ * Cursor Pulse Animation
+ * Creates a scaling effect when hovering interactive elements
+ */
 @keyframes pulse {
+  /* Normal size */
   0% {
     transform: translate(-50%, -50%) scale(1);
   }
+  /* Expanded size */
   50% {
     transform: translate(-50%, -50%) scale(1.5);
   }
+  /* Back to normal size */
   100% {
     transform: translate(-50%, -50%) scale(1);
   }
 }
 
 @keyframes springyText {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .springy {
@@ -971,3 +1348,115 @@ button {
   font-weight: bold;
   animation: springyText 0.6s ease-out;
 }
+
+/**
+ * Page Loader
+ * Shows a loading animation while the page contents are being downloaded
+ */
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--body-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border: 5px solid rgba(255, 110, 21, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--first-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#page-loader h2 {
+  color: var(--text-color-second);
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-top: 15px;
+}
+
+.dots {
+  display: inline-block;
+  width: 20px;
+  text-align: left;
+  animation: dots 1.4s infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
+}
+
+/* Dark mode version */
+[data-theme="dark"] #page-loader {
+  background-color: var(--body-color);
+}
+
+[data-theme="dark"] #page-loader h2 {
+  color: var(--color-white);
+}
+
+/* ----- ACCESSIBILITY - SCREEN READER ONLY ----- */
+/* Visually hidden elements that are still available to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/**
+ * Input Group Styles
+ * Improved form field organization with support for labels
+ */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Form validation styles */
+.input-field:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border: 1px solid #e74c3c;
+}
+
+.input-field:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border: 1px solid #27ae60;
+}
+
+/* ----- PROJECTS ----- */
