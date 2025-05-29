@@ -34,7 +34,7 @@ Welcome to my portfolio website, accessible at [www.ayzstha.com](https://www.ayz
 1. Clone the repository:
 
    ```
-   git clone https://github.com/yourusername/PortfolioWebsite.git
+   git clone https://github.com/ayzstha/PortfolioWebsite.git
    ```
 
 2. Navigate to the project directory:
@@ -70,7 +70,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-Feel free to reach out through the contact form on the website or via email at your.email@example.com.
+Feel free to reach out through the contact form on the website or via email at ayzstha@example.com.
 
 ---
 
